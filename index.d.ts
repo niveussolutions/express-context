@@ -11,8 +11,8 @@ export declare function set(key: string, value: string, opts: ExpressContextOpti
 
 export declare function get(key: string, opts: ExpressContextOptions): any;
 
-export declare function setAll(map: Map<any, any>, opts: ExpressContextOptions): any;
+export declare function setMany(map: Map<any, any>, opts: ExpressContextOptions): any;
 
-export declare function getAll(keys: Array<string>, opts: ExpressContextOptions): any;
+export declare function getMany(keys: Array<string>, opts: ExpressContextOptions): any;
 
 export declare function getNs(opts: ExpressContextOptions): Namespace;
