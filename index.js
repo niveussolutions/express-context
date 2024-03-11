@@ -4,7 +4,7 @@ const cls = require('cls-hooked');
 const namespaceId = '018e142b-59d3-7222-a397-638b535086e5';
 
 
-function expressContext({ nsid = namespaceId } = {}) {
+function expressContextMiddleware({ nsid = namespaceId } = {}) {
     const ns = cls.getNamespace(nsid) || cls.createNamespace(nsid);
 
     return (req, res, next) => {
@@ -52,10 +52,10 @@ function getMany(keys = [], { nsid = namespaceId } = {}) {
     const ns = cls.getNamespace(nsid);
 
     if (ns && ns.active) {
-        const _temp = {};
+        const _temp = [];
         for (const key of keys) {
             const value = ns.get(key);
-            _temp[key] = value;
+            _temp.push(value);
         }
 
         return _temp;
@@ -75,7 +75,7 @@ function getNs({ nsid = namespaceId } = {}) {
 }
 
 module.exports = {
-    expressContext: expressContext,
+    expressContextMiddleware: expressContextMiddleware,
     set: set,
     get: get,
     setMany: setMany,
