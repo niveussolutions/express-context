@@ -1,5 +1,7 @@
 # Project Specific files/folders
 .vscode/
+test/
+
 
 # Logs
 logs
