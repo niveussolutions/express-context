@@ -1,3 +1,10 @@
+[![Npm package version](https://badgen.net/npm/v/@niveus/express-context)](https://www.npmjs.com/package/@niveus/express-context)
+[![Npm package monthly downloads](https://badgen.net/npm/dm/@niveus/express-context)](https://www.npmjs.com/package/@niveus/express-context)
+[![GitHub issues](https://badgen.net/github/issues/niveussolutions/express-context)](https://github.com/niveussolutions/express-context/issues/)
+[![GitHub contributors](https://img.shields.io/github/contributors/niveussolutions/express-context.svg)](https://github.com/niveussolutions/express-context/graphs/contributors/)
+
+
+
 # Express Context
 Express middleware to get and set request-scoped context. It uses [cls-hooked](https://github.com/Jeff-Lewis/cls-hooked) under the hood (forked from [express-http-context](https://github.com/skonves/express-http-context)). Context is preserved over async/await (in node 8+).
 
