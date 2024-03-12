@@ -20,7 +20,7 @@ Note that some popular middlewares (such as body-parser, express-jwt) may cause 
 const express = require('express');
 const expressContext = require('@niveus/express-context');
 
-const a = express()
+const app = express();
 
 // Use any third-party middleware here.
 
@@ -74,7 +74,7 @@ TO set multiple values at the same time, pass an object to the `setMany` functio
 // Example middleware
 app.use((req, res, next) => {
     try {
-        const {userId, sessionId} = authService.getUserDetails(req.data)
+        const {userId, sessionId} = authService.getUserDetails(req.data);
 
 
         expressContext.setMany({userId: userId, sessionId: sessionId});
