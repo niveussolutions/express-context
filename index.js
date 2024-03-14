@@ -45,7 +45,7 @@ function setMany(map = {}, { nsid = namespaceId } = {}) {
         return _temp;
     }
 
-    return undefined;
+    return {};
 }
 
 function getMany(keys = [], { nsid = namespaceId } = {}) {
@@ -61,7 +61,7 @@ function getMany(keys = [], { nsid = namespaceId } = {}) {
         return _temp;
     }
 
-    return undefined;
+    return [];
 }
 
 function getNs({ nsid = namespaceId } = {}) {

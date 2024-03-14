@@ -1,3 +1,10 @@
+[![Npm package version](https://badgen.net/npm/v/@niveus/express-context)](https://www.npmjs.com/package/@niveus/express-context)
+[![Npm package monthly downloads](https://badgen.net/npm/dm/@niveus/express-context)](https://www.npmjs.com/package/@niveus/express-context)
+[![GitHub issues](https://badgen.net/github/issues/niveussolutions/express-context)](https://github.com/niveussolutions/express-context/issues/)
+[![GitHub contributors](https://img.shields.io/github/contributors/niveussolutions/express-context.svg)](https://github.com/niveussolutions/express-context/graphs/contributors/)
+
+
+
 # Express Context
 Express middleware to get and set request-scoped context. It uses [cls-hooked](https://github.com/Jeff-Lewis/cls-hooked) under the hood (forked from [express-http-context](https://github.com/skonves/express-http-context)). Context is preserved over async/await (in node 8+).
 
@@ -13,7 +20,7 @@ Note that some popular middlewares (such as body-parser, express-jwt) may cause 
 const express = require('express');
 const expressContext = require('@niveus/express-context');
 
-const a = express()
+const app = express();
 
 // Use any third-party middleware here.
 
@@ -22,6 +29,7 @@ app.use(expressContext.expressContextMiddleware());
 // all code from here on has access to the same context for each request
 
 ```
+### set()
 
 Set values for the incomming request
 ``` js
@@ -39,7 +47,10 @@ app.use((req, res, next) => {
 })
 ```
 
+### get()
 Get the value from the block of code that does not have access to the `req` object.
+
+>⚠️ If there is no value available for the key, the default value will be `undefined`.
 
 ``` js
 const expressContext = require('@niveus/express-context');
@@ -55,6 +66,8 @@ function invalidateToken() {
 }
 ```
 
+### getNs()
+
 To access the namespace directly, use this.
 ``` js
 const expressContext = require('@niveus/express-context');
@@ -62,12 +75,14 @@ const expressContext = require('@niveus/express-context');
 let ns = expressContext.getNs();
 ```
 
+### setMany()
+
 TO set multiple values at the same time, pass an object to the `setMany` function. The data will be set in the context using the key and value of the object.
 ``` js
 // Example middleware
 app.use((req, res, next) => {
     try {
-        const {userId, sessionId} = authService.getUserDetails(req.data)
+        const {userId, sessionId} = authService.getUserDetails(req.data);
 
 
         expressContext.setMany({userId: userId, sessionId: sessionId});
@@ -78,7 +93,11 @@ app.use((req, res, next) => {
 })
 ```
 
+### getMany()
+
 To get multiple values from the context, pass an array containing the key name (as string) to `getMany` function. The function returns an array with the values of the keys in the same order as the input array.
+
+>⚠️ If there is no value available for the key, the default value will be `undefined`.
 
 ``` js
 const expressContext = require('@niveus/express-context');
