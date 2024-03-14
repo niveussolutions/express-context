@@ -29,6 +29,7 @@ app.use(expressContext.expressContextMiddleware());
 // all code from here on has access to the same context for each request
 
 ```
+### set()
 
 Set values for the incomming request
 ``` js
@@ -46,7 +47,10 @@ app.use((req, res, next) => {
 })
 ```
 
+### get()
 Get the value from the block of code that does not have access to the `req` object.
+
+>⚠️ If there is no value available for the key, the default value will be `undefined`.
 
 ``` js
 const expressContext = require('@niveus/express-context');
@@ -62,12 +66,16 @@ function invalidateToken() {
 }
 ```
 
+### getNs()
+
 To access the namespace directly, use this.
 ``` js
 const expressContext = require('@niveus/express-context');
 
 let ns = expressContext.getNs();
 ```
+
+### setMany()
 
 TO set multiple values at the same time, pass an object to the `setMany` function. The data will be set in the context using the key and value of the object.
 ``` js
@@ -85,7 +93,11 @@ app.use((req, res, next) => {
 })
 ```
 
+### getMany()
+
 To get multiple values from the context, pass an array containing the key name (as string) to `getMany` function. The function returns an array with the values of the keys in the same order as the input array.
+
+>⚠️ If there is no value available for the key, the default value will be `undefined`.
 
 ``` js
 const expressContext = require('@niveus/express-context');
