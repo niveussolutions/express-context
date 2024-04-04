@@ -1,5 +1,6 @@
 # Project Specific files/folders
 .vscode/
+junit.xml
 
 # Logs
 logs

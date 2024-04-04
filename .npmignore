@@ -1,6 +1,9 @@
 # Project Specific files/folders
 .vscode/
 test/
+junit.xml
+.eslintrc.json
+jest.config.js
 
 
 # Logs
